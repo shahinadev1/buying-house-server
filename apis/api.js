@@ -1,4 +1,5 @@
 const childCategoryModel = require("../models/childCategoryModel");
+const childSubCategoryModel = require("../models/childSubCategoryModel");
 const footerAddressModel = require("../models/FooterAddressModel");
 const navbarParentModel = require("../models/navbarParentModel");
 const navbarSubModel = require("../models/navbarSubModel");
@@ -506,6 +507,89 @@ router.delete("/child-category/:id", async (req, res) => {
 router.get("/child-category", async (req, res) => {
   try {
     const result = await childCategoryModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/child-category/:slug", async (req, res) => {
+  try {
+    const result = await childCategoryModel.findOne({ slug: req.params.slug });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//mange child sub category
+
+//add child category-> api
+router.post("/child-sub-category", async (req, res) => {
+  try {
+    const doc = new childSubCategoryModel(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//update child category  api
+router.put("/child-sub-category/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await childSubCategoryModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//delete child category api delete
+router.delete("/child-sub-category/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await childSubCategoryModel.deleteOne({
+      _id: req.params.id,
+    });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/child-sub-category", async (req, res) => {
+  try {
+    const result = await childSubCategoryModel.find({});
     res.status(200).json({
       data: result,
     });
