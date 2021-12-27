@@ -372,6 +372,20 @@ router.get("/add-sub-category", async (req, res) => {
   }
 });
 
+//get sub category by slug api
+router.get("/add-sub-category/:slug", async (req, res) => {
+  try {
+    const result = await subCategoryModel.find({ slug: req.params.slug });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
 //manage footer address add api
 router.post("/footer-address", async (req, res) => {
   try {
