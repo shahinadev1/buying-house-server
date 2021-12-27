@@ -422,4 +422,18 @@ router.delete("/footer-address/:id", async (req, res) => {
   }
 });
 
+//get footer address
+router.get("/footer-address", async (req, res) => {
+  try {
+    const result = await footerAddressModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
 module.exports = router;
