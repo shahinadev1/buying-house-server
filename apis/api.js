@@ -1,3 +1,4 @@
+const childCategoryModel = require("../models/childCategoryModel");
 const footerAddressModel = require("../models/FooterAddressModel");
 const navbarParentModel = require("../models/navbarParentModel");
 const navbarSubModel = require("../models/navbarSubModel");
@@ -426,6 +427,71 @@ router.delete("/footer-address/:id", async (req, res) => {
 router.get("/footer-address", async (req, res) => {
   try {
     const result = await footerAddressModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//add child category-> api
+router.post("/child-category", async (req, res) => {
+  try {
+    const doc = new childCategoryModel(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//update child category  api
+router.put("/child-category/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await childCategoryModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//delete child category api delete
+router.delete("/child-category/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await childCategoryModel.deleteOne({ _id: req.params.id });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/child-category", async (req, res) => {
+  try {
+    const result = await childCategoryModel.find({});
     res.status(200).json({
       data: result,
     });
