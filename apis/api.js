@@ -1,3 +1,4 @@
+const footerAddressModel = require("../models/FooterAddressModel");
 const navbarParentModel = require("../models/navbarParentModel");
 const navbarSubModel = require("../models/navbarSubModel");
 const sliderModel = require("../models/sliderModel");
@@ -360,6 +361,57 @@ router.get("/add-topbar-category", async (req, res) => {
 router.get("/add-sub-category", async (req, res) => {
   try {
     const result = await subCategoryModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//manage footer address add api
+router.post("/footer-address", async (req, res) => {
+  try {
+    const doc = new footerAddressModel(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//manage footer address Update api
+router.put("/footer-address/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await footerAddressModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//manage footer address api delete
+router.delete("/footer-address/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await footerAddressModel.deleteOne({ _id: req.params.id });
     res.status(200).json({
       data: result,
     });
