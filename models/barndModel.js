@@ -1,6 +1,6 @@
 const mongo = require("mongoose");
 const { Schema } = mongo;
-const topBarCategorySchema = new Schema({
+const brandSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -8,10 +8,6 @@ const topBarCategorySchema = new Schema({
   },
   icon: {
     type: String,
-    required: true,
-  },
-  parentCategory: {
-    type: Object,
     required: true,
   },
   slug: {
@@ -24,6 +20,6 @@ const topBarCategorySchema = new Schema({
   },
 });
 
-const subCategoryModel = mongo.model("subCategory", topBarCategorySchema);
+const brandModel = mongo.model("brand", brandSchema);
 
-module.exports = subCategoryModel;
+module.exports = brandModel;

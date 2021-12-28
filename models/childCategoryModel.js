@@ -6,8 +6,8 @@ const childCategorySchema = new Schema({
     required: true,
     unique: false,
   },
-  parentId: {
-    type: String,
+  parentCategory: {
+    type: Object,
     required: true,
   },
   slug: {

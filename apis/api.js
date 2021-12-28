@@ -1,8 +1,10 @@
+const brandModel = require("../models/barndModel");
 const childCategoryModel = require("../models/childCategoryModel");
 const childSubCategoryModel = require("../models/childSubCategoryModel");
 const footerAddressModel = require("../models/FooterAddressModel");
 const navbarParentModel = require("../models/navbarParentModel");
 const navbarSubModel = require("../models/navbarSubModel");
+const productModel = require("../models/productModel");
 const sliderModel = require("../models/sliderModel");
 const subCategoryModel = require("../models/subCategoryModel");
 const topBarCategoryModel = require("../models/topBarCategoryModel");
@@ -590,6 +592,158 @@ router.delete("/child-sub-category/:id", async (req, res) => {
 router.get("/child-sub-category", async (req, res) => {
   try {
     const result = await childSubCategoryModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//mange brand
+
+//add brand-> api
+router.post("/brand", async (req, res) => {
+  try {
+    const doc = new brandModel(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//update brand  api
+router.put("/brand/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await brandModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//delete brand api delete
+router.delete("/brand/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await brandModel.deleteOne({
+      _id: req.params.id,
+    });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/brand", async (req, res) => {
+  try {
+    const result = await brandModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//product manage api
+
+//add brand-> api
+router.post("/products", async (req, res) => {
+  try {
+    const doc = new productModel(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//update brand  api
+router.put("/products/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await productModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//delete brand api delete
+router.delete("/products/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await productModel.deleteOne({
+      _id: req.params.id,
+    });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/products", async (req, res) => {
+  try {
+    const result = await productModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: error.message,
+    });
+  }
+});
+
+//get footer address
+router.get("/products/:slug", async (req, res) => {
+  try {
+    const result = await productModel.findOne({ slug: req.params.slug });
     res.status(200).json({
       data: result,
     });
