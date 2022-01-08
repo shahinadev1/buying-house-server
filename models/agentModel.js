@@ -39,7 +39,7 @@ const agentSchema = new Schema({
   status: {
     type: String,
     required: false,
-    default: false,
+    default: true,
   },
   create_date: {
     type: String,
