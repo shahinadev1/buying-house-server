@@ -1,65 +1,61 @@
 const mongo = require("mongoose");
 const { Schema } = mongo;
-const productSchema = new Schema({
-  name: {
+
+const orderSchema = new Schema({
+  phone: {
     type: String,
     required: true,
-    unique: true,
   },
-  category_name: {
+  country: {
+    type: String,
+    required: true,
+  },
+  district: {
+    type: String,
+    required: true,
+  },
+  order_date: {
+    type: String,
+    required: true,
+  },
+  payment_method: {
     type: Object,
     required: true,
   },
-  categoryId: {
+  sender_info: {
     type: String,
     required: true,
   },
-  price: {
+  attached_file: {
     type: String,
     required: true,
   },
-  price_regular: {
+  address: {
     type: String,
     required: true,
   },
-  stock: {
-    type: String,
-    required: true,
-  },
-  brand: {
+  products: {
     type: Object,
     required: true,
   },
-  image: {
+  user_name: {
+    type: String,
+    required: true,
+  },
+  user_email: {
+    type: String,
+    required: true,
+  },
+  order_status: {
+    type: String,
+    required: true,
+  },
+  shopEmail: {
+    type: String,
+    required: true,
+  },
+  orders: {
     type: Array,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  variant: {
-    type: String,
-    required: true,
-  },
-  delivery_charge: {
-    type: String,
-    required: true,
-  },
-  delivery_time: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  added_by: {
-    type: String,
-    required: true,
-  },
-  slug: {
-    type: String,
     required: true,
   },
   added_date: {
@@ -68,6 +64,6 @@ const productSchema = new Schema({
   },
 });
 
-const productModel = mongo.model("products", productSchema);
+const orderModel = mongo.model("orders", orderSchema);
 
-module.exports = productModel;
+module.exports = orderModel;
