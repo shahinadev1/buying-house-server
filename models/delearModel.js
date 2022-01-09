@@ -50,6 +50,10 @@ const dealerSchema = new Schema({
     required: false,
     default: {},
   },
+  profile: {
+    type: String,
+    required: false,
+  },
   agentEmail: {
     type: String,
     required: false,

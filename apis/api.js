@@ -1358,7 +1358,7 @@ router.get("/shop", async (req, res) => {
 
 router.get("/shop-by-dealer/:email", async (req, res) => {
   try {
-    const result = await shopModel.find({dealerEmail:req.params.email});
+    const result = await shopModel.find({ dealerEmail: req.params.email });
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
@@ -1442,6 +1442,34 @@ router.put("/agents/:email", async (req, res) => {
     const result = await agentModel.findOneAndUpdate(
       { email: req.params.email },
       req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+router.put("/agent-profile/:email", async (req, res) => {
+  try {
+    const result = await agentModel.findOneAndUpdate(
+      { email: req.params.email },
+      { profile: req.body.profile }
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+router.put("/dealer-profile/:email", async (req, res) => {
+  try {
+    const result = await dealerModel.findOneAndUpdate(
+      { email: req.params.email },
+      { profile: req.body.profile }
     );
     res.status(200).json(result);
   } catch (error) {

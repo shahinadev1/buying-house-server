@@ -41,6 +41,10 @@ const agentSchema = new Schema({
     required: false,
     default: true,
   },
+  profile: {
+    type: String,
+    required: false,
+  },
   create_date: {
     type: String,
     required: true,
