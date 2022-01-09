@@ -1426,6 +1426,22 @@ router.put("/agents/:email", async (req, res) => {
   }
 });
 
+router.put("/agent/:id", async (req, res) => {
+  try {
+    const result = await agentModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        status: req.body.status,
+      }
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 router.put("/req-payout/:id", async (req, res) => {
   try {
     const result = await payoutModel.findOneAndUpdate(
@@ -1535,6 +1551,22 @@ router.put("/dealers/:id", async (req, res) => {
       }
     );
 
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+router.put("/dealer/:id", async (req, res) => {
+  try {
+    const result = await dealerModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        status: req.body.status,
+      }
+    );
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
