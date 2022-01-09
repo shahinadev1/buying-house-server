@@ -1523,6 +1523,16 @@ router.get("/agents/payouts", async (req, res) => {
     });
   }
 });
+router.get("/agents/payouts/:email", async (req, res) => {
+  try {
+    const result = await agentPayoutModel.find({ email: req.params.email });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
 
 router.get("/agents/:email", async (req, res) => {
   try {
