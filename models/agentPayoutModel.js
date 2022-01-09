@@ -14,6 +14,10 @@ const agentPayoutSchema = new Schema({
     type: String,
     required: true,
   },
+  agent: {
+    type: Object,
+    required: true,
+  },
   contactNumber: {
     type: String,
     required: true,

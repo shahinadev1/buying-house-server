@@ -45,6 +45,11 @@ const dealerSchema = new Schema({
     type: String,
     required: false,
   },
+  agent: {
+    type: Object,
+    required: false,
+    default: {},
+  },
   agentEmail: {
     type: String,
     required: false,

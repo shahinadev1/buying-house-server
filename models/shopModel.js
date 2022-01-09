@@ -24,6 +24,11 @@ const shopSchema = new Schema({
     type: String,
     required: true,
   },
+  dealer: {
+    type: Object,
+    required: false,
+    default: {},
+  },
   varified: {
     type: String,
     required: false,

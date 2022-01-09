@@ -1461,6 +1461,25 @@ router.put("/req-payout/:id", async (req, res) => {
 });
 //ss
 
+router.put("/agents/payouts/:id", async (req, res) => {
+  try {
+    const result = await agentPayoutModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        status: req.body.status,
+        adminReceived: req.body.paymentInformation,
+      }
+    );
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//ss
+
 router.delete("/agents/:id", async (req, res) => {
   try {
     const result = await agentModel.findByIdAndDelete(req.params.id);
