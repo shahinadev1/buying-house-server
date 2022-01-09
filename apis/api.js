@@ -1657,6 +1657,20 @@ router.put("/dealer/:id", async (req, res) => {
   }
 });
 
+router.put("/dealers-update/:email", async (req, res) => {
+  try {
+    const result = await dealerModel.findOneAndUpdate(
+      { email: req.params.email },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 router.delete("/dealers/:id", async (req, res) => {
   try {
     const result = await dealerModel.findByIdAndDelete(req.params.id);
