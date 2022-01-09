@@ -21,6 +21,7 @@ const payoutModel = require("../models/payoutModel");
 const agentModel = require("../models/agentModel");
 const dealerModel = require("../models/delearModel");
 const agentPayoutModel = require("../models/agentPayoutModel");
+const dealerPayoutModel = require("../models/dealerPayoutModel");
 const router = require("express").Router();
 
 //get all top menus api
@@ -105,6 +106,7 @@ router.post("/add-topmenu1", async (req, res) => {
     });
   }
 });
+
 //update top menus api
 router.put("/topmenu1/:id", async (req, res) => {
   //   if (!res.body) res.status(400).json("Bad request!");
@@ -1478,6 +1480,23 @@ router.put("/agents/payouts/:id", async (req, res) => {
     });
   }
 });
+router.put("/dealer/payouts/:id", async (req, res) => {
+  try {
+    const result = await dealerPayoutModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        status: req.body.status,
+        adminReceived: req.body.paymentInformation,
+      }
+    );
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
 //ss
 
 router.delete("/agents/:id", async (req, res) => {
@@ -1523,9 +1542,32 @@ router.get("/agents/payouts", async (req, res) => {
     });
   }
 });
+
+router.get("/dealer/payouts", async (req, res) => {
+  try {
+    const result = await dealerPayoutModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 router.get("/agents/payouts/:email", async (req, res) => {
   try {
     const result = await agentPayoutModel.find({ email: req.params.email });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+router.get("/dealer/payouts/:email", async (req, res) => {
+  try {
+    const result = await dealerPayoutModel.find({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
