@@ -1401,6 +1401,17 @@ router.post("/agent/req-payout", async (req, res) => {
     });
   }
 });
+router.post("/dealer/req-payout", async (req, res) => {
+  try {
+    const doc = new dealerPayoutModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
 
 router.post("/agents", async (req, res) => {
   try {
