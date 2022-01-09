@@ -1355,6 +1355,18 @@ router.get("/shop", async (req, res) => {
     });
   }
 });
+
+router.get("/shop-by-dealer/:email", async (req, res) => {
+  try {
+    const result = await shopModel.find({dealerEmail:req.params.email});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 router.get("/shop/:email", async (req, res) => {
   try {
     const result = await shopModel.findOne({ email: req.params.email });
