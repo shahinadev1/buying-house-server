@@ -10,6 +10,11 @@ const shopSchema = new Schema({
     unique: true,
     required: true,
   },
+  dealerEmail: {
+    type: String,
+    unique: false,
+    required: false,
+  },
   shopName: {
     type: String,
     required: true,
