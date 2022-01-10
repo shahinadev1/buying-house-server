@@ -22,6 +22,7 @@ const agentModel = require("../models/agentModel");
 const dealerModel = require("../models/delearModel");
 const agentPayoutModel = require("../models/agentPayoutModel");
 const dealerPayoutModel = require("../models/dealerPayoutModel");
+const reviewModel = require("../models/reviewModel");
 const router = require("express").Router();
 
 //get all top menus api
@@ -1413,6 +1414,7 @@ router.post("/agent/req-payout", async (req, res) => {
     });
   }
 });
+
 router.post("/dealer/req-payout", async (req, res) => {
   try {
     const doc = new dealerPayoutModel(req.body);
@@ -1531,6 +1533,7 @@ router.put("/agents/payouts/:id", async (req, res) => {
     });
   }
 });
+
 router.put("/dealer/payouts/:id", async (req, res) => {
   try {
     const result = await dealerPayoutModel.findOneAndUpdate(
@@ -1769,6 +1772,60 @@ router.get("/payouts/:email", async (req, res) => {
 router.get("/users/:email", async (req, res) => {
   try {
     const result = await userModel.findOne({ email: req.params.email });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//review api
+
+//add review api
+router.post("/reviews", async (req, res) => {
+  try {
+    const doc = new reviewModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//get all reviews api
+router.get("/reviews", async (req, res) => {
+  try {
+    const result = await reviewModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//delete review api
+router.delete("/reviews/:id", async (req, res) => {
+  try {
+    const result = await reviewModel.findOneAndDelete({ _id: req.params.id });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update review api
+router.put("/reviews/:id", async (req, res) => {
+  try {
+    const result = await reviewModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({

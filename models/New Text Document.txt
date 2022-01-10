@@ -1,0 +1,6 @@
+mongodb+srv://buyinghouse:Q1G5H5WjV6yzUjfL@cluster0.h19y0.mongodb.net/buyinghouse
+?retryWrites=true&w=majority
+
+
+
+mongodb+srv://adminDB:z9E9PS9Yq79zavP@cluster0.jab9p.mongodb.net/buyinghouse?retryWrites=true&w=majority
