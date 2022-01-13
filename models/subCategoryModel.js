@@ -14,6 +14,10 @@ const topBarCategorySchema = new Schema({
     type: Object,
     required: true,
   },
+  parentId: {
+    type: String,
+    required: false,
+  },
   slug: {
     type: String,
     required: true,

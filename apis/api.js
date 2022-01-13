@@ -23,6 +23,13 @@ const dealerModel = require("../models/delearModel");
 const agentPayoutModel = require("../models/agentPayoutModel");
 const dealerPayoutModel = require("../models/dealerPayoutModel");
 const reviewModel = require("../models/reviewModel");
+const pageModel = require("../models/pageModel");
+const mdMessageModel = require("../models/mdMessageModel");
+const coronaPageModel = require("../models/coronaPageModel");
+const productSurchingModel = require("../models/productSurchingModel");
+const brandingModel = require("../models/brandingPageModel");
+const upcomingModel = require("../models/UpcomingPage");
+const supportModel = require("../models/SupportModel");
 const router = require("express").Router();
 
 //get all top menus api
@@ -1564,6 +1571,17 @@ router.delete("/agents/:id", async (req, res) => {
   }
 });
 
+router.delete("/shop/:id", async (req, res) => {
+  try {
+    const result = await shopModel.findByIdAndDelete(req.params.id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 router.get("/agents", async (req, res) => {
   try {
     const result = await agentModel.find({});
@@ -1819,10 +1837,292 @@ router.delete("/reviews/:id", async (req, res) => {
   }
 });
 
+//delete review api
+router.delete("/supports/:id", async (req, res) => {
+  try {
+    const result = await supportModel.findOneAndDelete({ _id: req.params.id });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 //update review api
 router.put("/reviews/:id", async (req, res) => {
   try {
     const result = await reviewModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//page apis in the evening at 7:58 PM 01/10/2022
+
+//add page api
+router.post("/pages", async (req, res) => {
+  try {
+    const doc = new pageModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//add page api
+router.post("/md-message", async (req, res) => {
+  try {
+    const doc = new mdMessageModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//add page api
+router.post("/corona-page", async (req, res) => {
+  try {
+    const doc = new coronaPageModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//add page api
+router.post("/branding-page", async (req, res) => {
+  try {
+    const doc = new brandingModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//add page api
+router.post("/product-surching", async (req, res) => {
+  try {
+    const doc = new productSurchingModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//add page api
+router.post("/upcoming-page", async (req, res) => {
+  try {
+    const doc = new upcomingModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+router.post("/supports", async (req, res) => {
+  try {
+    const doc = new supportModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//get all reviews api
+router.get("/pages", async (req, res) => {
+  try {
+    const result = await pageModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//get all reviews api
+router.get("/product-surching", async (req, res) => {
+  try {
+    const result = await productSurchingModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//get all reviews api
+router.get("/supports", async (req, res) => {
+  try {
+    const result = await supportModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+router.get("/branding-page", async (req, res) => {
+  try {
+    const result = await brandingModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//get all reviews api
+router.get("/md-message", async (req, res) => {
+  try {
+    const result = await mdMessageModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//get all reviews api
+router.get("/corona-page", async (req, res) => {
+  try {
+    const result = await coronaPageModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//get all reviews api
+router.get("/upcoming-page", async (req, res) => {
+  try {
+    const result = await upcomingModel.find({});
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//delete page api
+router.delete("/pages/:id", async (req, res) => {
+  try {
+    const result = await pageModel.findOneAndDelete({ _id: req.params.id });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update page api
+router.put("/pages/:id", async (req, res) => {
+  try {
+    const result = await pageModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update page api
+router.put("/product-surching/:id", async (req, res) => {
+  try {
+    const result = await productSurchingModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update page api
+router.put("/branding-page/:id", async (req, res) => {
+  try {
+    const result = await brandingModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+//update page api
+router.put("/upcoming-page/:id", async (req, res) => {
+  try {
+    const result = await upcomingModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update page api
+router.put("/corona-page/:id", async (req, res) => {
+  try {
+    const result = await coronaPageModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+//update page api
+router.put("/md-message/:id", async (req, res) => {
+  try {
+    const result = await mdMessageModel.findOneAndUpdate(
       { _id: req.params.id },
       req.body
     );
