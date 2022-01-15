@@ -1701,6 +1701,20 @@ router.put("/dealers/:id", async (req, res) => {
     });
   }
 });
+router.put("/shop/:email", async (req, res) => {
+  try {
+    const result = await shopModel.findOneAndUpdate(
+      { email: req.params.email },
+      req.body
+    );
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
 
 router.put("/dealer/:id", async (req, res) => {
   try {
