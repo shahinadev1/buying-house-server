@@ -1288,6 +1288,7 @@ router.put("/add-terms/:id", async (req, res) => {
   }
 });
 
+
 //general Page
 router.post("/add-general", async (req, res) => {
   try {

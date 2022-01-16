@@ -17,6 +17,10 @@ const supportSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  supportIn: {
+    type: String,
+    required: true,
+  },
   file: {
     type: String,
     required: false,
