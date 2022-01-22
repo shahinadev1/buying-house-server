@@ -30,6 +30,7 @@ const productSurchingModel = require("../models/productSurchingModel");
 const brandingModel = require("../models/brandingPageModel");
 const upcomingModel = require("../models/UpcomingPage");
 const supportModel = require("../models/SupportModel");
+const supportNoticeModel = require("../models/supportNoticeModel");
 const router = require("express").Router();
 
 //get all top menus api
@@ -40,7 +41,7 @@ router.get("/topmenu1", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -53,7 +54,7 @@ router.get("/parentMenus", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -66,7 +67,7 @@ router.get("/subMenus", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -79,7 +80,7 @@ router.get("/sliders", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -93,7 +94,7 @@ router.delete("/sliders/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -109,7 +110,7 @@ router.post("/add-topmenu1", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -128,10 +129,10 @@ router.put("/topmenu1/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -149,10 +150,10 @@ router.put("/parentMenu/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -170,10 +171,10 @@ router.put("/subMenu/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -187,7 +188,7 @@ router.delete("/topmenu1/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -202,7 +203,7 @@ router.delete("/parentMenu/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -216,7 +217,7 @@ router.delete("/subMenu/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -232,7 +233,7 @@ router.post("/add-parentMenu", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -247,7 +248,7 @@ router.post("/add-subMenu", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -262,10 +263,10 @@ router.post("/add-slider", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -280,10 +281,10 @@ router.post("/add-topbar-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -298,10 +299,10 @@ router.post("/add-sub-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -318,10 +319,10 @@ router.delete("/add-topbar-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -336,10 +337,10 @@ router.delete("/add-sub-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -358,10 +359,10 @@ router.put("/add-topbar-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -380,10 +381,10 @@ router.put("/add-sub-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -398,7 +399,7 @@ router.get("/add-topbar-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -412,7 +413,7 @@ router.get("/add-sub-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -426,7 +427,7 @@ router.get("/add-sub-category/:slug", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -441,10 +442,10 @@ router.post("/footer-address", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -466,10 +467,10 @@ router.put("/footer-address/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -484,7 +485,7 @@ router.delete("/footer-address/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -498,7 +499,7 @@ router.get("/footer-address", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -513,10 +514,10 @@ router.post("/child-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -535,10 +536,10 @@ router.put("/child-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -553,7 +554,7 @@ router.delete("/child-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -567,7 +568,7 @@ router.get("/child-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -583,7 +584,7 @@ router.get("/child-category/:slug", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -600,10 +601,10 @@ router.post("/child-sub-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -622,10 +623,10 @@ router.put("/child-sub-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -642,7 +643,7 @@ router.delete("/child-sub-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -656,7 +657,7 @@ router.get("/child-sub-category", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -670,7 +671,7 @@ router.get("/child-sub-category/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -687,10 +688,10 @@ router.post("/brand", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -709,10 +710,10 @@ router.put("/brand/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -729,7 +730,7 @@ router.delete("/brand/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -743,7 +744,7 @@ router.get("/brand", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -757,7 +758,7 @@ router.get("/brand/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -775,10 +776,10 @@ router.post("/products", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -797,10 +798,10 @@ router.put("/products/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -817,7 +818,7 @@ router.delete("/products/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -831,7 +832,7 @@ router.get("/products", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -845,7 +846,7 @@ router.get("/products/:slug", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -861,7 +862,7 @@ router.get("/products/filter/c/:cID", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -877,7 +878,7 @@ router.get("/products/filter/author/:author", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -892,10 +893,10 @@ router.post("/payment", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -909,7 +910,7 @@ router.get("/payment", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -922,7 +923,7 @@ router.get("/payment/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -942,10 +943,10 @@ router.put("/payment/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -962,7 +963,7 @@ router.delete("/payment/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1055,10 +1056,10 @@ router.post("/orders", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1072,7 +1073,7 @@ router.get("/orders", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1124,7 +1125,7 @@ We're excited for you to receive your order #${req.body.order._id} and will noti
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1137,7 +1138,7 @@ router.get("/orders/:id", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1150,7 +1151,7 @@ router.get("/order/:email", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1164,7 +1165,7 @@ router.get("/order/:email", async (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       data: error.message,
     });
   }
@@ -1186,7 +1187,7 @@ router.get("/about", async (req, res) => {
     const result = await aboutModel.find({});
     res.status(200).json(result[0]);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1203,7 +1204,7 @@ router.put("/add-about/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1225,7 +1226,7 @@ router.get("/privacy", async (req, res) => {
     const result = await privacyModel.find({});
     res.status(200).json(result[0]);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1242,7 +1243,7 @@ router.put("/add-privacy/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1265,7 +1266,7 @@ router.get("/terms", async (req, res) => {
     const result = await termsModel.find({});
     res.status(200).json(result[0]);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1282,17 +1283,27 @@ router.put("/add-terms/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
 });
 
-
 //general Page
 router.post("/add-general", async (req, res) => {
   try {
     const doc = new generalModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+//general Page
+router.post("/support-notice", async (req, res) => {
+  try {
+    const doc = new supportNoticeModel(req.body);
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
@@ -1306,7 +1317,18 @@ router.get("/general", async (req, res) => {
     const result = await generalModel.find({});
     res.status(200).json(result[0]);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
+      error: error.message,
+    });
+  }
+});
+
+router.get("/support-notice", async (req, res) => {
+  try {
+    const result = await supportNoticeModel.find({});
+    res.status(200).json(result[0]);
+  } catch (error) {
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1323,7 +1345,20 @@ router.put("/add-general/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
+      error: error.message,
+    });
+  }
+});
+router.put("/support-notice/:id", async (req, res) => {
+  try {
+    const result = await supportNoticeModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1336,7 +1371,7 @@ router.put("/add-general/:id", async (req, res) => {
 //     const result = await doc.save();
 //     req.status(200).json(result);
 //   } catch (error) {
-//     res.status(500).json({
+//     res.status(200).json({
 // error:error.message
 // })
 //   }
@@ -1348,7 +1383,7 @@ router.post("/shop", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1359,7 +1394,7 @@ router.get("/shop", async (req, res) => {
     const result = await shopModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1370,7 +1405,7 @@ router.get("/shop-by-dealer/:email", async (req, res) => {
     const result = await shopModel.find({ dealerEmail: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1381,7 +1416,7 @@ router.get("/shop/:email", async (req, res) => {
     const result = await shopModel.findOne({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1393,7 +1428,7 @@ router.post("/users", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1405,7 +1440,7 @@ router.post("/req-payout", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1417,7 +1452,7 @@ router.post("/agent/req-payout", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1429,7 +1464,7 @@ router.post("/dealer/req-payout", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1441,7 +1476,7 @@ router.post("/agents", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1455,7 +1490,7 @@ router.put("/agents/:email", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1469,7 +1504,7 @@ router.put("/agent-profile/:email", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1483,7 +1518,7 @@ router.put("/dealer-profile/:email", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1499,7 +1534,7 @@ router.put("/agent/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1517,7 +1552,7 @@ router.put("/req-payout/:id", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1536,7 +1571,7 @@ router.put("/agents/payouts/:id", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1554,7 +1589,7 @@ router.put("/dealer/payouts/:id", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1566,7 +1601,7 @@ router.delete("/agents/:id", async (req, res) => {
     const result = await agentModel.findByIdAndDelete(req.params.id);
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1577,7 +1612,7 @@ router.delete("/shop/:id", async (req, res) => {
     const result = await shopModel.findByIdAndDelete(req.params.id);
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1588,7 +1623,7 @@ router.get("/agents", async (req, res) => {
     const result = await agentModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1599,7 +1634,7 @@ router.get("/agent/:email", async (req, res) => {
     const result = await agentModel.findOne({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1610,7 +1645,7 @@ router.get("/agents/payouts", async (req, res) => {
     const result = await agentPayoutModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1621,7 +1656,7 @@ router.get("/dealer/payouts", async (req, res) => {
     const result = await dealerPayoutModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1632,7 +1667,7 @@ router.get("/agents/payouts/:email", async (req, res) => {
     const result = await agentPayoutModel.find({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1643,7 +1678,7 @@ router.get("/dealer/payouts/:email", async (req, res) => {
     const result = await dealerPayoutModel.find({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1654,7 +1689,7 @@ router.get("/agents/:email", async (req, res) => {
     const result = await agentModel.findOne({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1665,7 +1700,7 @@ router.get("/agents/payout/:email", async (req, res) => {
     const result = await agentPayoutModel.find({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1679,7 +1714,7 @@ router.post("/dealers", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1697,7 +1732,7 @@ router.put("/dealers/:id", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1711,7 +1746,7 @@ router.put("/shop/:email", async (req, res) => {
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1727,7 +1762,7 @@ router.put("/dealer/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1741,7 +1776,7 @@ router.put("/dealers-update/:email", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1752,7 +1787,7 @@ router.delete("/dealers/:id", async (req, res) => {
     const result = await dealerModel.findByIdAndDelete(req.params.id);
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1763,7 +1798,7 @@ router.get("/dealers", async (req, res) => {
     const result = await dealerModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1774,7 +1809,7 @@ router.get("/dealer/:email", async (req, res) => {
     const result = await dealerModel.findOne({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1785,7 +1820,7 @@ router.get("/payouts", async (req, res) => {
     const result = await payoutModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1796,7 +1831,7 @@ router.get("/payouts/:email", async (req, res) => {
     const result = await payoutModel.find({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1807,7 +1842,7 @@ router.get("/users/:email", async (req, res) => {
     const result = await userModel.findOne({ email: req.params.email });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1822,7 +1857,7 @@ router.post("/reviews", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1834,7 +1869,7 @@ router.get("/reviews", async (req, res) => {
     const result = await reviewModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1846,7 +1881,7 @@ router.delete("/reviews/:id", async (req, res) => {
     const result = await reviewModel.findOneAndDelete({ _id: req.params.id });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1858,7 +1893,7 @@ router.delete("/supports/:id", async (req, res) => {
     const result = await supportModel.findOneAndDelete({ _id: req.params.id });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1873,7 +1908,7 @@ router.put("/reviews/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1888,7 +1923,7 @@ router.post("/pages", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1901,7 +1936,7 @@ router.post("/md-message", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1914,7 +1949,7 @@ router.post("/corona-page", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1926,7 +1961,7 @@ router.post("/branding-page", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1939,7 +1974,7 @@ router.post("/product-surching", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1951,7 +1986,7 @@ router.post("/upcoming-page", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1962,7 +1997,7 @@ router.post("/supports", async (req, res) => {
     const result = await doc.save();
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1974,7 +2009,7 @@ router.get("/pages", async (req, res) => {
     const result = await pageModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1985,7 +2020,7 @@ router.get("/product-surching", async (req, res) => {
     const result = await productSurchingModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -1996,7 +2031,7 @@ router.get("/supports", async (req, res) => {
     const result = await supportModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2007,7 +2042,7 @@ router.get("/branding-page", async (req, res) => {
     const result = await brandingModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2019,7 +2054,7 @@ router.get("/md-message", async (req, res) => {
     const result = await mdMessageModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2031,7 +2066,7 @@ router.get("/corona-page", async (req, res) => {
     const result = await coronaPageModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2042,7 +2077,7 @@ router.get("/upcoming-page", async (req, res) => {
     const result = await upcomingModel.find({});
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2054,7 +2089,7 @@ router.delete("/pages/:id", async (req, res) => {
     const result = await pageModel.findOneAndDelete({ _id: req.params.id });
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2069,7 +2104,7 @@ router.put("/pages/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2084,7 +2119,7 @@ router.put("/product-surching/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2099,7 +2134,7 @@ router.put("/branding-page/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2113,7 +2148,7 @@ router.put("/upcoming-page/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2128,7 +2163,7 @@ router.put("/corona-page/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
@@ -2143,7 +2178,7 @@ router.put("/md-message/:id", async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       error: error.message,
     });
   }
