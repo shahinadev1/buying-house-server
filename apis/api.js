@@ -4,6 +4,7 @@ const childCategoryModel = require("../models/childCategoryModel");
 const childSubCategoryModel = require("../models/childSubCategoryModel");
 const footerAddressModel = require("../models/FooterAddressModel");
 const navbarParentModel = require("../models/navbarParentModel");
+const productInfoSurgingModel = require("../models/productInfoSurchingNotice");
 const navbarSubModel = require("../models/navbarSubModel");
 const orderModel = require("../models/orderModel");
 const paymentModel = require("../models/paymentModel");
@@ -1310,6 +1311,15 @@ router.post("/support-notice", async (req, res) => {
     console.log(error.message);
   }
 });
+router.post("/product-notice", async (req, res) => {
+  try {
+    const doc = new productInfoSurgingModel(req.body);
+    const result = await doc.save();
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 //Terms Page
 router.get("/general", async (req, res) => {
@@ -1326,6 +1336,16 @@ router.get("/general", async (req, res) => {
 router.get("/support-notice", async (req, res) => {
   try {
     const result = await supportNoticeModel.find({});
+    res.status(200).json(result[0]);
+  } catch (error) {
+    res.status(200).json({
+      error: error.message,
+    });
+  }
+});
+router.get("/product-notice", async (req, res) => {
+  try {
+    const result = await productInfoSurgingModel.find({});
     res.status(200).json(result[0]);
   } catch (error) {
     res.status(200).json({
@@ -1353,6 +1373,19 @@ router.put("/add-general/:id", async (req, res) => {
 router.put("/support-notice/:id", async (req, res) => {
   try {
     const result = await supportNoticeModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(200).json({
+      error: error.message,
+    });
+  }
+});
+router.put("/product-notice/:id", async (req, res) => {
+  try {
+    const result = await productInfoSurgingModel.findOneAndUpdate(
       { _id: req.params.id },
       req.body
     );
