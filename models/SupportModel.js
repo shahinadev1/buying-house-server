@@ -25,6 +25,10 @@ const supportSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  whatsappNumber: {
+    type: String,
+    required: true,
+  },
   added_date: {
     type: String,
     required: true,
