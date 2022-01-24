@@ -34,7 +34,7 @@ const supportModel = require("../models/SupportModel");
 const supportNoticeModel = require("../models/supportNoticeModel");
 const router = require("express").Router();
 const job = require("../models/job");
-//get all top menus api
+//get all top menus ap
 router.get("/topmenu1", async (req, res) => {
   try {
     const result = await topMenuModel.find({});
