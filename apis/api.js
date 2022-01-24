@@ -33,7 +33,7 @@ const upcomingModel = require("../models/UpcomingPage");
 const supportModel = require("../models/SupportModel");
 const supportNoticeModel = require("../models/supportNoticeModel");
 const router = require("express").Router();
-
+const job = require("../models/job");
 //get all top menus api
 router.get("/topmenu1", async (req, res) => {
   try {
@@ -116,6 +116,21 @@ router.post("/add-topmenu1", async (req, res) => {
     });
   }
 });
+//add top menus api
+router.post("/jobs", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const doc = new job(req.body);
+    const result = await doc.save();
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(200).json({
+      data: error.message,
+    });
+  }
+});
 
 //update top menus api
 router.put("/topmenu1/:id", async (req, res) => {
@@ -126,6 +141,24 @@ router.put("/topmenu1/:id", async (req, res) => {
       { _id: req.params.id },
       req.body
     );
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(200).json({
+      error: error.message,
+    });
+    res.status(200).json({
+      data: error.message,
+    });
+  }
+});
+//update top menus api
+router.put("/jobs/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+
+  try {
+    const result = await job.findOneAndUpdate({ _id: req.params.id }, req.body);
     res.status(200).json({
       data: result,
     });
@@ -181,6 +214,19 @@ router.put("/subMenu/:id", async (req, res) => {
   }
 });
 //delete top menus api
+router.delete("/jobs/:id", async (req, res) => {
+  //   if (!res.body) res.status(400).json("Bad request!");
+  try {
+    const result = await job.deleteOne({ _id: req.params.id });
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(200).json({
+      data: error.message,
+    });
+  }
+});
 router.delete("/topmenu1/:id", async (req, res) => {
   //   if (!res.body) res.status(400).json("Bad request!");
   try {
@@ -410,6 +456,19 @@ router.get("/add-topbar-category", async (req, res) => {
 router.get("/add-sub-category", async (req, res) => {
   try {
     const result = await subCategoryModel.find({});
+    res.status(200).json({
+      data: result,
+    });
+  } catch (error) {
+    res.status(200).json({
+      data: error.message,
+    });
+  }
+});
+
+router.get("/jobs", async (req, res) => {
+  try {
+    const result = await job.find({});
     res.status(200).json({
       data: result,
     });
