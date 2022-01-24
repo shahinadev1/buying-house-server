@@ -47,7 +47,7 @@ router.get("/topmenu1", async (req, res) => {
     });
   }
 });
-//get all parent  menus api
+//get all parent  menus ap
 router.get("/parentMenus", async (req, res) => {
   try {
     const result = await navbarParentModel.find({});
