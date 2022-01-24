@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const JobSchema = new mongoose.Schema({
   jobTitle: {
-    type: STring,
+    type: String,
     required: true,
   },
   jobCategory: {
